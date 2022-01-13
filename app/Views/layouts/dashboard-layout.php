@@ -31,7 +31,7 @@ $user_type = $session->get('user_type');
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__wobble" src="assets/img/Logo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="" src="assets/img/Aries.gif" alt="Logo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -62,7 +62,7 @@ $user_type = $session->get('user_type');
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link" style="background-color:#4f0083;">
       <img src="assets/img/Logo.png" alt="Project Logo" class="brand-image rounded elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Project Mira</span>
+      <span class="brand-text font-weight-light"><?= SITE_NAME; ?></span>
     </a>
 
     <!-- Sidebar -->
@@ -87,6 +87,7 @@ $user_type = $session->get('user_type');
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-header">PUBLIC</li>
           <li class="nav-item">
             <a href="<?php echo site_url('dashboard');?>" class="nav-link">
               <i class="nav-icon fas fa-th-large"></i>
@@ -96,36 +97,7 @@ $user_type = $session->get('user_type');
             </a>
           </li>
 
-          <li class="nav-header">PUBLIC</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-microchip"></i>
-              <p>
-                Readings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item pl-2">
-                <a href="<?php echo site_url('temperature');?>" class="nav-link">
-                  <i class="fas fa-thermometer nav-icon"></i>
-                  <p>Temperature</p>
-                </a>
-              </li>
-              <li class="nav-item pl-2">
-                <a href="<?php echo site_url('bpm');?>" class="nav-link">
-                  <i class="fas fa-heartbeat nav-icon"></i>
-                  <p>Heartbeat (BPM)</p>
-                </a>
-              </li>
-              <li class="nav-item pl-2">
-                <a href="<?php echo site_url('spo');?>" class="nav-link">
-                  <i class="fas fa-lungs nav-icon"></i>
-                  <p>Oxygen (SPO<sup>2</sup>)</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          
           <li class="nav-item">
             <a href="<?php echo site_url('report');?>" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
@@ -203,16 +175,16 @@ $user_type = $session->get('user_type');
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <div class="content-header bg-white shadow mb-3" style="height: 55px;">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0"><?= (isset($pageTitle)) ? $pageTitle :'Document'; ?></h1>
+            <h5 class="m-0"><?= (isset($pageTitle)) ? $pageTitle :'Document'; ?></h5>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><?= (isset($pageTitle)) ? $pageTitle :'Document'; ?></li>
-              <li class="breadcrumb-item active">Project Mira</li>
+              <li class="breadcrumb-item active"><?= SITE_NAME; ?></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -238,7 +210,7 @@ $user_type = $session->get('user_type');
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>PSM Project 2021-2022 <a href="<?= base_url(); ?>">Shamira Suhairi</a>.</strong>
+    <strong>PSM Project 2021-2022 <a href="<?= base_url(); ?>">Hilmi Abdul Halim</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.1.0
@@ -285,11 +257,11 @@ $user_type = $session->get('user_type');
           $('#reportTable').DataTable({
             dom: 'Bfrtip',
             buttons: [
-              //{ extend: 'copy', className: 'btn btn-primary glyphicon glyphicon-duplicate' },
-              //{ extend: 'csv', className: 'btn btn-primary glyphicon glyphicon-save-file' },
-              { extend: 'excel', className: 'btn btn-primary glyphicon glyphicon-list-alt' },
-              { extend: 'pdf', className: 'btn btn-primary glyphicon glyphicon-file' },
-              { extend: 'print', className: 'btn btn-primary glyphicon glyphicon-print' }
+              { extend: 'copy', className: 'btn btn-primary glyphicon glyphicon-duplicate', text: 'Copy <i class="fas fa-copy"></i>' },
+              { extend: 'csv', className: 'btn btn-secondary glyphicon glyphicon-save-file', text: 'CSV <i class="fas fa-file-csv"></i>' },
+              { extend: 'excel', className: 'btn btn-success glyphicon glyphicon-list-alt', text: 'Excel <i class="fas fa-file-excel"></i>' },
+              { extend: 'pdf', className: 'btn btn-danger glyphicon glyphicon-file', text: 'PDF <i class="fas fa-file-pdf"></i>' },
+              { extend: 'print', className: 'btn btn-primary glyphicon glyphicon-print', text: 'Print <i class="fas fa-print"></i>' }
             ]
           });
           
