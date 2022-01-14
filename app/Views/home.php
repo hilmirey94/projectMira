@@ -4,7 +4,7 @@
 <!-- Info boxes -->
 <div class="row">
     <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box">
+    <div class="info-box bg-dark">
         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-id-badge"></i></span>
 
         <div class="info-box-content">
@@ -19,7 +19,7 @@
     </div>
     <!-- /.col -->
     <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3">
+    <div class="info-box mb-3 bg-dark">
         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thermometer"></i></span>
 
         <div class="info-box-content">
@@ -38,7 +38,7 @@
     <div class="clearfix hidden-md-up"></div>
 
     <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3">
+    <div class="info-box mb-3 bg-dark">
         <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-heartbeat"></i></span>
 
         <div class="info-box-content">
@@ -53,7 +53,7 @@
     </div>
     <!-- /.col -->
     <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3">
+    <div class="info-box mb-3 bg-dark">
         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-lungs"></i></span>
 
         <div class="info-box-content">
@@ -72,7 +72,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card shadow p-4" width="100%">
+        <div class="card shadow p-4 bg-dark" width="100%">
             <!-- Information Section -->
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="5000">
             <ol class="carousel-indicators">

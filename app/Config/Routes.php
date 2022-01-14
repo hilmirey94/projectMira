@@ -34,11 +34,22 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'SigninController::index');
 $routes->get('/signup', 'SignupController::index');
 $routes->get('/signin', 'SigninController::index');
-$routes->get('/dashboard', 'DashboardController::index',['filter' => 'authGuard']);
-$routes->get('/temperature', 'TemperatureController::index',['filter' => 'authGuard']);
-$routes->get('/bpm', 'BpmController::index',['filter' => 'authGuard']);
-$routes->get('/spo', 'SpoController::index',['filter' => 'authGuard']);
+$routes->get('/home', 'HomeController::index',['filter' => 'authGuard']);
 $routes->get('/report', 'ReportController::index',['filter' => 'authGuard']);
+$routes->get('/logs', 'LogsController::index',['filter' => 'authGuard']);
+$routes->get('/logs/delete/(:num)', 'LogsController::delete/$1',['filter' => 'authGuard']);
+$routes->get('/manage-report', 'ManageReportController::index',['filter' => 'authGuard']);
+$routes->get('/manage-report/create', 'ManageReportController::create',['filter' => 'authGuard']);
+$routes->post('/manage-report/store', 'ManageReportController::store',['filter' => 'authGuard']);
+$routes->get('/manage-report/edit/(:num)', 'ManageReportController::singleReport/$1',['filter' => 'authGuard']);
+$routes->post('/manage-report/update', 'ManageReportController::update',['filter' => 'authGuard']);
+$routes->get('/manage-report/delete/(:num)', 'ManageReportController::delete/$1',['filter' => 'authGuard']);
+$routes->get('/manage-user', 'ManageUserController::index',['filter' => 'authGuard']);
+$routes->get('/manage-user/create', 'ManageUserController::create',['filter' => 'authGuard']);
+$routes->post('/manage-user/store', 'ManageUserController::store',['filter' => 'authGuard']);
+$routes->get('/manage-user/edit/(:num)', 'ManageUserController::singleReport/$1',['filter' => 'authGuard']);
+$routes->post('/manage-user/update', 'ManageUserController::update',['filter' => 'authGuard']);
+$routes->get('/manage-user/delete/(:num)', 'ManageUserController::delete/$1',['filter' => 'authGuard']);
 
 /*
  * --------------------------------------------------------------------

@@ -19,6 +19,6 @@ class ReportController extends Controller
         $data['pageTitle'] = 'Report';
         $data['name'] = $name;
         $data['reading'] = $readingModel->where('rfid', $rfid)->orderBy('date_created', 'DESC')->findAll();
-        echo view('report/index.php', $data);
+        echo view('report/list.php', $data);
     }
 }

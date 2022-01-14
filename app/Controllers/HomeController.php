@@ -6,7 +6,7 @@ use App\Models\ReadingModel;
 use App\Controllers\DateTime;
 
   
-class DashboardController extends Controller
+class HomeController extends Controller
 {
 
     public function index()
@@ -20,6 +20,6 @@ class DashboardController extends Controller
         $data['bpmToday'] = $readingModel->bpmToday();
         $data['spoToday'] = $readingModel->spoToday();
         $data['reading'] = $readingModel->where('date_created >=', date('Y-m-d 00:00:00'))->orderBy('date_created', 'DESC')->findAll();
-        echo view('dashboard', $data);
+        echo view('home', $data);
     }
 }

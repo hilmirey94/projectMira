@@ -5,7 +5,7 @@
         <!-- Info boxes -->
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+                <div class="card bg-dark">
                     <div class="card-body">
                         <div class="input-group">
                             <label class="col-md-1">Batch ID</label>
@@ -21,7 +21,7 @@
             <!-- /.col -->
             <div class="col-md-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-dark">
                     <label class="form-group">Temperature (Today)</label>
                 </div>
                 <div class="card-body">
@@ -67,7 +67,7 @@
             <!-- /.col -->
             <div class="col-md-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-dark">
                     <label class="form-group">Heartbeat (Today)</label>
                 </div>
                 <div class="card-body">
@@ -113,7 +113,7 @@
             <!-- /.col -->
             <div class="col-md-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-dark">
                     <label class="form-group">Oxygen (Today)</label>
                 </div>
                 <div class="card-body">
@@ -163,8 +163,8 @@
         <div class="row pt-2">
             <div class="col-md-12 pt-2">
                 <div class="card">
-                    <div class="card-header">
-                        <label>List of Reading (<?php echo (isset($name)) ? $name:'Self';?>)</label>
+                    <div class="card-header bg-dark">
+                        <label>Records (<?php echo (isset($name)) ? $name:'Self';?>)</label>
                     </div>
                     <div class="card-body">
                         <!-- Date -->
