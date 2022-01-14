@@ -21,7 +21,7 @@
                             <?= $validation->listErrors() ?>
                             </div>
                             <?php endif;?>
-                            <form method="post" id="update_report" name="update_report" action="<?= site_url('manage-report/store') ?>">
+                            <form method="post" id="add_user" name="add_user" action="<?= site_url('manage-user/store') ?>">
                                 <div class="form-group d-flex">
                                     <label class="col-md-2">Name</label>
                                     <input type="text" name="name" placeholder="Name" class="form-control col-md-6" required/>
@@ -36,12 +36,24 @@
                                 </div>
                                 <div class="form-group d-flex">
                                     <label class="col-md-2">User Type</label>
-                                    <label class="col-md-3">Normal <p style="font-size:small;color:red;">Default to normal access. Only Admin can assign higher access.</p></label>
-                                    <input type="text" name="user_type" value="normal" class="form-control col-md-3" hidden/>
+                                    <select class="form-select form-control col-md-3" aria-label="Default select example" name="user_type" <?php if($user_type != 'admin'){echo 'disabled';};?> required>
+                                        <option selected value="normal">Normal</option>
+                                        <?php if($user_type == 'admin'){
+                                            echo '<option value="staff">Staff</option>
+                                            <option value="admin">Admin</option>';
+                                        }
+                                         ?>
+                                    </select>
+                                </div>
+                                <div class="form-group d-flex ">
+                                    <span class="col-md-2"></span>
+                                    <span id="nextPics" style="display:none;">
+                                        <img id="output" class="img-circle elevation-2" height="150px;" width="150px;"/>
+                                    </span>
                                 </div>
                                 <div class="form-group d-flex">
                                     <label class="col-md-2">Image</label>
-                                    <input type="text" name="image" placeholder="Image" class="form-control col-md-3"/>
+                                    <input type="file" name="image" id="image" placeholder="Image" class="form-control col-md-6 image-select" onchange="loadFile(event)"/>
                                 </div>
                                 <div class="form-group d-flex">
                                     <label class="col-md-2">Password</label>
@@ -69,7 +81,20 @@
 
 
 <?= $this->section('script'); ?>
+<script>
 
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+        }
+        var nextPics = document.getElementById("nextPics");
+        nextPics.style.display = "block";
+    };
+
+    
+</script>
 <?= $this->endSection() ?>
 
 <?= $this->endSection() ?>

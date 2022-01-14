@@ -47,7 +47,7 @@
                             <td><?php echo $i['name']; ?></td>
                             <td><?php echo $i['email']; ?></td>
                             <td><?php echo $i['rfid']; ?></td>
-                            <td><?php echo $i['created_date']; ?></td>
+                            <td><?php echo $i['date_created']; ?></td>
                             <td><?php echo $i['user_type']; ?></td>
                             <td>
                                 <a href="<?php echo base_url('/manage-user/edit/'.$i['id']);?>" class="btn btn-info" title="Edit this row.">

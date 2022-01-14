@@ -9,6 +9,7 @@ class SigninController extends Controller
 {
     public function index()
     {
+        $data['pageTitle'] = 'Sign In';
         helper(['form']);
         echo view('signin');
     } 
@@ -39,7 +40,7 @@ class SigninController extends Controller
                 ];
 
                 $session->set($ses_data);
-                return redirect()->to('/dashboard');
+                return redirect()->to('/home');
             
             }else{
                 $session->setFlashdata('msg', 'Password is incorrect.');
@@ -50,5 +51,26 @@ class SigninController extends Controller
             $session->setFlashdata('msg', 'Email does not exist.');
             return redirect()->to('/signin');
         }
+    }
+
+    public function resession()
+    {
+        $session = session();
+        $userModel = new UserModel();
+        $id = $this->request->$session->get('id');
+        $resessionData = $userModel->where('id', $id)->first();
+        $ses_data = [
+            'id' => $resessionData['id'],
+            'name' => $resessionData['name'],
+            'rfid' => $resessionData['rfid'],
+            'email' => $resessionData['email'],
+            'user_type' => $resessionData['user_type'],
+            'image' => $resessionData['image'],
+            'isLoggedIn' => TRUE
+        ];
+
+        $session->set($ses_data);
+
+        return redirect();
     }
 }

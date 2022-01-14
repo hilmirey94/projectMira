@@ -35,7 +35,7 @@ class Database extends Config
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'pro',
+        'database' => 'projectmira',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

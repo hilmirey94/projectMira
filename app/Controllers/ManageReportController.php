@@ -44,7 +44,7 @@ class ManageReportController extends Controller
     }
     // show single report
     public function singleReport($id = null){
-        $data['pageTitle'] = 'Edit Report';
+        $data['pageTitle'] = 'Manage Report';
         $readingModel = new ReadingModel();
         $data['report_obj'] = $readingModel->where('id', $id)->first();
         return view('manage-report/edit', $data);

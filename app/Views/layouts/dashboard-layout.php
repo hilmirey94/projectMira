@@ -3,6 +3,7 @@ $session = session();
 $name = $session->get('name');
 $image = $session->get('image');
 $user_type = $session->get('user_type');
+$id = $session->get('id');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +16,11 @@ $user_type = $session->get('user_type');
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/public/plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>/public/dist/css/adminlte.min.css">
   <!-- Datatables styles -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.css"/>
@@ -32,7 +33,7 @@ $user_type = $session->get('user_type');
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="" src="assets/img/Aries.gif" alt="Logo" height="60" width="60">
+    <img class="" src="<?php echo base_url(); ?>/public/assets/img/Aries.gif" alt="Logo" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -57,12 +58,12 @@ $user_type = $session->get('user_type');
     </ul>
   </nav>
   <!-- /.navbar -->
-
+  <?php echo base_url(); ?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="assets/img/Logo.png" alt="Project Logo" class="brand-image rounded elevation-3" style="opacity: .8">
+      <img src="<?php echo base_url(); ?>/public/assets/img/Logo.png" alt="Project Logo" class="brand-image rounded elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light"><?= SITE_NAME; ?></span>
     </a>
 
@@ -73,10 +74,10 @@ $user_type = $session->get('user_type');
         <div class="image">
           <?php 
             if ($image != null){
-              echo '<img src="data:image/png;base64,'.base64_encode($image).'" class="img-circle elevation-2" alt="User Image">';
+              echo '<img src="'. base_url().'/uploads/'.$image.'" class="img-circle elevation-2" alt="User Image" style="height:40px;width:40px;">';
             }
             else {
-              echo '<img src="assets/img/avatar.png" class="img-circle elevation-2" alt="User Image">';
+              echo '<img src="'. base_url().'/public/assets/img/avatar.png" class="img-circle elevation-2" alt="User Image" style="height:40px;width:40px;">';
             }
           ?>
         </div>
@@ -155,7 +156,7 @@ $user_type = $session->get('user_type');
 
           <li class="nav-header">EXTRA</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="<?php echo site_url('user-detail/').$id;?>" class="nav-link">
               <i class="nav-icon fas fa-user-tag"></i>
               <p>
                 User Detail
@@ -223,22 +224,22 @@ $user_type = $session->get('user_type');
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="<?php echo base_url(); ?>/public/dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/raphael/raphael.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="<?php echo base_url(); ?>/public/plugins/chart.js/Chart.min.js"></script>
 <!-- date-range-picker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.min.js"></script>
@@ -248,9 +249,9 @@ $user_type = $session->get('user_type');
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.3/b-2.1.1/b-colvis-2.1.1/b-html5-2.1.1/b-print-2.1.1/datatables.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="<?php echo base_url(); ?>/public/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="<?php echo base_url(); ?>/public/dist/js/pages/dashboard2.js"></script>
 
 <?= $this->renderSection('script'); ?>
 <script>

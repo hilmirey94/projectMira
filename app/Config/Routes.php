@@ -50,6 +50,9 @@ $routes->post('/manage-user/store', 'ManageUserController::store',['filter' => '
 $routes->get('/manage-user/edit/(:num)', 'ManageUserController::singleReport/$1',['filter' => 'authGuard']);
 $routes->post('/manage-user/update', 'ManageUserController::update',['filter' => 'authGuard']);
 $routes->get('/manage-user/delete/(:num)', 'ManageUserController::delete/$1',['filter' => 'authGuard']);
+$routes->get('/user-detail/(:num)', 'UserDetailController::index',['filter' => 'authGuard']);
+$routes->get('/user-detail/edit/(:num)', 'UserDetailController::singleReport/$1',['filter' => 'authGuard']);
+$routes->post('/user-detail/update', 'UserDetailController::update',['filter' => 'authGuard']);
 
 /*
  * --------------------------------------------------------------------

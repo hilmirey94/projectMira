@@ -8,6 +8,7 @@ class SignupController extends Controller
 {
     public function index()
     {
+        $data['pageTitle'] = 'Sign Up';
         helper(['form']);
         $data = [];
         echo view('signup', $data);
@@ -18,11 +19,9 @@ class SignupController extends Controller
         helper(['form']);
         $rules = [
             'name'              => ['label' => 'Name', 'rules' => 'required|min_length[2]|max_length[50]'],
-            'rfid'              => ['label' => 'RFID', 'rules' => 'required|min_length[8]|max_length[100]|valid_rfid|is_unique[users.rfid]'],
+            'rfid'              => ['label' => 'RFID', 'rules' => 'required|min_length[8]|max_length[100]|is_unique[users.rfid]'],
             'email'             => ['label' => 'Email', 'rules' => 'required|min_length[4]|max_length[100]|valid_email|is_unique[users.email]'],
             'password'          => ['label' => 'Password', 'rules' => 'required|min_length[4]|max_length[50]'],
-            'user_type'         => ['label' => 'User Type', 'rules' => 'required'],
-            //'image'             => ['label' => 'Name', 'rules' => 'required'],
             'confirmpassword'   => ['label' => 'Confirm Password', 'rules' => 'matches[password]']
         ];
           
@@ -34,8 +33,7 @@ class SignupController extends Controller
                 'rfid'     => $this->request->getVar('rfid'),
                 'email'    => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-                'user_type'     => $this->request->getVar('user_type'),
-                'image'     => $this->request->getVar('image'),
+                'user_type'  => 'normal',
             ];
 
             $userModel->save($data);

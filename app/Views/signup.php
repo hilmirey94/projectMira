@@ -35,14 +35,6 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <input type="text" name="user_type" placeholder="User Type" value="<?= set_value('user_type') ?>" class="form-control" >
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <input type="text" name="image" placeholder="Profile Image" value="<?= set_value('image') ?>" class="form-control" >
-                    </div>
-
-                    <div class="form-group mb-3">
                         <input type="password" name="password" placeholder="Password" class="form-control" >
                     </div>
 
