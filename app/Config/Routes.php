@@ -34,11 +34,15 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'SigninController::index');
 $routes->get('/signup', 'SignupController::index');
 $routes->get('/signin', 'SigninController::index');
+$routes->get('/logout', 'SigninController::logout');
 $routes->get('/home', 'HomeController::index',['filter' => 'authGuard']);
+$routes->get('/about', 'AboutController::index',['filter' => 'authGuard']);
 $routes->get('/report', 'ReportController::index',['filter' => 'authGuard']);
 $routes->get('/logs', 'LogsController::index',['filter' => 'authGuard']);
+$routes->post('/logs/find', 'LogsController::index',['filter' => 'authGuard']);
 $routes->get('/logs/delete/(:num)', 'LogsController::delete/$1',['filter' => 'authGuard']);
 $routes->get('/manage-report', 'ManageReportController::index',['filter' => 'authGuard']);
+$routes->post('/manage-report/find', 'ManageReportController::index',['filter' => 'authGuard']);
 $routes->get('/manage-report/create', 'ManageReportController::create',['filter' => 'authGuard']);
 $routes->post('/manage-report/store', 'ManageReportController::store',['filter' => 'authGuard']);
 $routes->get('/manage-report/edit/(:num)', 'ManageReportController::singleReport/$1',['filter' => 'authGuard']);
@@ -53,6 +57,8 @@ $routes->get('/manage-user/delete/(:num)', 'ManageUserController::delete/$1',['f
 $routes->get('/user-detail/(:num)', 'UserDetailController::index',['filter' => 'authGuard']);
 $routes->get('/user-detail/edit/(:num)', 'UserDetailController::singleReport/$1',['filter' => 'authGuard']);
 $routes->post('/user-detail/update', 'UserDetailController::update',['filter' => 'authGuard']);
+$routes->get('/manage-web', 'ManageWebController::index',['filter' => 'authGuard']);
+$routes->post('/manage-web/update', 'ManageWebController::update',['filter' => 'authGuard']);
 
 /*
  * --------------------------------------------------------------------

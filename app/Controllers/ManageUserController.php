@@ -7,6 +7,28 @@ use App\Controllers\DateTime;
   
 class ManageUserController extends Controller
 {
+    public function __construct()
+    {
+        // define session
+        $session = session();
+        // get email and user_type of session user
+        $email = $session->get('email');
+        $access = $session->get('user_type');
+        // if session user is not admin then generate access denied message
+        if($access != 'admin' && $access != 'staff')
+        {
+            // print access denied message
+            echo '<html><meta name="viewport" content="width=500, initial-scale=1"><body style="margin-top: 40px;"><center>';
+            echo '<strong style="color: red; font-size: 24px;">Access Denied!!!</strong><br/><br/>';
+            echo 'User with email <strong>\''.$email.'\'</strong> are not authorized to access this page.<br/>';
+            echo 'Require access higher than <strong>'.$access.'</strong> level.';
+            echo '<p style="margin-top: 50px;"><hr/>'.SITE_NAME.' 2021-2022 - '.SITE_CREATOR.'</p>';
+            echo '</center></body></html>';
+            // process stop
+            die; 
+        }
+
+    }
 
     public function index()
     {

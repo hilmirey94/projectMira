@@ -1,17 +1,70 @@
 <?= $this->extend('layouts/dashboard-layout'); ?>
 <?= $this->section('content'); ?>
 
-<!-- Info boxes -->
+<!-- Info boxes Display Simple Reading Data -->
 <div class="row">
     <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box bg-dark">
         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-id-badge"></i></span>
 
         <div class="info-box-content">
-        <span class="info-box-text">Total Scan (Today)</span>
-        <span class="info-box-number">
-            <?= (isset($scanToday)) ? $scanToday:'0' ?>
-        </span>
+            <div id="tempCarousel" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <span class="info-box-text">Total Scan (Today)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $scanToday:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Total Scan (Past 7 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $scan7Days:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Total Scan (Past 30 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $scan30Days:'0' ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-12 col-sm-6 col-md-3">
+    <div class="info-box bg-dark">
+        <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-thermometer-half"></i></span>
+
+        <div class="info-box-content">
+            <div id="tempCarousel" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <span class="info-box-text">Risk Temperature (Today)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $tempToday:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Risk Temperature (Past 7 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $temp7Days:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Risk Temperature (Past 30 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $temp30Days:'0' ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.info-box-content -->
     </div>
@@ -20,57 +73,77 @@
     <!-- /.col -->
     <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box mb-3 bg-dark">
-        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thermometer"></i></span>
+        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-heartbeat"></i></span>
 
         <div class="info-box-content">
-        <span class="info-box-text">Risk Temperature (Today)</span>
-        <span class="info-box-number">
-            <?= (isset($tempToday)) ? $tempToday:'0' ?>
-        </span>
+            <div id="tempCarousel" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <span class="info-box-text">Risk Heartrate (Today)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $bpmToday:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Risk Heartrate (Past 7 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $bpm7Days:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Risk Heartrate (Past 30 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $bpm30Days:'0' ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.info-box-content -->
     </div>
     <!-- /.info-box -->
     </div>
     <!-- /.col -->
-
-    <!-- fix for small devices only -->
-    <div class="clearfix hidden-md-up"></div>
-
     <div class="col-12 col-sm-6 col-md-3">
     <div class="info-box mb-3 bg-dark">
-        <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-heartbeat"></i></span>
+        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-lungs"></i></span>
 
         <div class="info-box-content">
-        <span class="info-box-text">Risk Heartbeat (Today)</span>
-        <span class="info-box-number">
-            <?= (isset($bpmToday)) ? $bpmToday:'0' ?>
-        </span>
+            <div id="tempCarousel" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <span class="info-box-text">Risk Oxygen (Today)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $spoToday:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Risk Oxygen (Past 7 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $spo7Days:'0' ?>
+                        </span>
+                    </div>
+                    <div class="carousel-item">
+                        <span class="info-box-text">Risk Oxygen (Past 30 Days)</span>
+                        <span class="info-box-number">
+                            <?= (isset($tempToday)) ? $spo30Days:'0' ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.info-box-content -->
     </div>
     <!-- /.info-box -->
     </div>
     <!-- /.col -->
-    <div class="col-12 col-sm-6 col-md-3">
-    <div class="info-box mb-3 bg-dark">
-        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-lungs"></i></span>
-
-        <div class="info-box-content">
-        <span class="info-box-text">Risk Oxygen (Today)</span>
-        <span class="info-box-number">
-            <?= (isset($spoToday)) ? $spoToday:'0' ?>
-        </span>
-        </div>
-        <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-    </div>
-    <!-- /.col -->
+    
 </div>
 <!-- /.row -->
 
-<div class="row">
+<div class="row d-none d-lg-block">
     <div class="col-md-12">
         <div class="card shadow p-4 bg-dark" width="100%">
             <!-- Information Section -->

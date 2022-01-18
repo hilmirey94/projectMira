@@ -15,6 +15,8 @@ class UserDetailController extends Controller
         $id = $session->get('id');
         $userModel = new UserModel();
         $data['pageTitle'] = 'User Detail';
+        $data['rfid'] = $session->get('rfid');
+        $data['name'] = $session->get('name');
         $data['user_obj'] = $userModel->where('id', $id)->first();
         echo view('user-detail/list.php', $data);
     }

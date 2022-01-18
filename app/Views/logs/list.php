@@ -8,20 +8,27 @@
 <div class="row pt-2">
     <div class="col-md-12 pt-2">
         <div class="card">
-            <div class="card-header">
-                <label>System Logs</label>
+            <div class="card-header bg-dark">
+                <label>System Logs (From: <?= (isset($startDate))?$startDate:'Earliest Date';?> - To: <?= (isset($endDate))?$endDate:'Recent Date';?>)</label>
             </div>
             <div class="card-body">
-                <!-- Date -->
-                <div class="row">
-                    
+                <div class="col-md-12">
+                    <form method="post" id="logs" name="logs" action="<?= site_url('/logs/find') ?>" enctype="multipart/form-data">
+                        <div class="form-group d-flex flex-wrap">
+                            <label class="label col-md-1">From :</label>
+                            <input type="date" name="fromDate" id="fromDate" class="form-control col-md-2 mr-5" />
+                            <label class="label col-md-1">To :</label>
+                            <input type="date" name="toDate" id="toDate" class="form-control col-md-2 mr-3" />
+                            <button class="btn btn-primary" name="search" id="search" type="submit" style="width: 65px;"><i class="fas fa-search"></i></button> 
+                        </div>
+                        <hr />
+                    </form>
                 </div>
                 <div class="table-responsive">
                     <table id="reportTable" class="table table-sm table-striped table-bordered" style="width:100%;">
                 
                         <thead>
                             <tr>
-                                <th scope="col">Logs ID</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Operation</th>
                                 <th scope="col">Description</th>
@@ -33,7 +40,6 @@
                         <?php if($reading): ?>
                         <?php foreach($reading as $i): ?>
                         <tr>
-                            <td><?php echo $i['id']; ?></td>
                             <td><?php echo $i['date_created']; ?></td>
                             <td><?php echo $i['operation']; ?></td>
                             <td><?php echo $i['description']; ?></td>
@@ -55,7 +61,7 @@
 
 <!-- Modal HTML -->
 <div id="delModal" class="modal fade">
-	<div class="modal-dialog modal-confirm">
+	<div class="modal-dialog modal-confirm modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header flex-column">
 				<div class="icon-box">
@@ -66,7 +72,6 @@
 			</div>
 			<div class="modal-body">
 				<p>Do you really want to delete these records? This process cannot be undone.</p>
-                Logs ID : <p id="showId" name="showId"></p>
 			</div>
 			<div class="modal-footer justify-content-center">
 				<button type="button" class="btn btn-secondary btn-modal" data-dismiss="modal">Cancel</button>

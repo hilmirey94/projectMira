@@ -4,9 +4,9 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\UserModel;
   
-
 class SigninController extends Controller
 {
+
     public function index()
     {
         $data['pageTitle'] = 'Sign In';
@@ -51,6 +51,24 @@ class SigninController extends Controller
             $session->setFlashdata('msg', 'Email does not exist.');
             return redirect()->to('/signin');
         }
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $ses_data = [
+            'id' => '',
+            'name' => '',
+            'rfid' => '',
+            'email' => '',
+            'user_type' => '',
+            'image' => '',
+            'isLoggedIn' => FALSE
+        ];
+
+        $session->set($ses_data);
+
+        return redirect()->to('/signin');
     }
 
     public function resession()

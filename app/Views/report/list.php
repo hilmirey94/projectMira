@@ -22,11 +22,26 @@
             <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-dark">
-                    <label class="form-group">Temperature (Today)</label>
+                    <label class="form-group">Temperature (Past 30 Days)</label>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-success elevation-1">
+                                    <i class="fas fa-thermometer-half"></i>      
+                                </span>
+                                <div class="info-box-content">
+                                <span class="info-box-text">Normal</span>
+                                <span class="info-box-number">
+                                    <?= (isset($tempnormal)) ? $tempnormal:'0' ?>
+                                </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <div class="col-md-4">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-primary elevation-1">
                                     <i class="fas fa-thermometer-quarter"></i>
@@ -36,14 +51,14 @@
                                 <div class="info-box-content">
                                 <span class="info-box-text">Low</span>
                                 <span class="info-box-number">
-                                    <?= (isset($low)) ? $low:'0' ?>
+                                    <?= (isset($templow)) ? $templow:'0' ?>
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
                             <!-- /.info-box -->
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-danger elevation-1">
                                     <i class="fas fa-thermometer-full"></i>
@@ -53,7 +68,7 @@
                                 <div class="info-box-content">
                                 <span class="info-box-text">High</span>
                                 <span class="info-box-number">
-                                    <?= (isset($low)) ? $low:'0' ?>
+                                    <?= (isset($temphigh)) ? $temphigh:'0' ?>
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -68,11 +83,26 @@
             <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-dark">
-                    <label class="form-group">Heartbeat (Today)</label>
+                    <label class="form-group">Heartbeat (Past 30 Days)</label>
                 </div>
                 <div class="card-body">
                 <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-success elevation-1">
+                                    <i class="fas fa-heartbeat"></i>
+                                </span>
+                                <div class="info-box-content">
+                                <span class="info-box-text">Normal</span>
+                                <span class="info-box-number">
+                                    <?= (isset($bpmnormal)) ? $bpmnormal:'0' ?>
+                                </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <div class="col-md-4">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-primary elevation-1">
                                     <i class="fas fa-heartbeat"></i>
@@ -82,14 +112,14 @@
                                 <div class="info-box-content">
                                 <span class="info-box-text">Low</span>
                                 <span class="info-box-number">
-                                    <?= (isset($low)) ? $low:'0' ?>
+                                    <?= (isset($bpmlow)) ? $bpmlow:'0' ?>
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
                             <!-- /.info-box -->
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-danger elevation-1">
                                     <i class="fas fa-heartbeat"></i>
@@ -99,7 +129,7 @@
                                 <div class="info-box-content">
                                 <span class="info-box-text">High</span>
                                 <span class="info-box-number">
-                                    <?= (isset($low)) ? $low:'0' ?>
+                                    <?= (isset($bpmhigh)) ? $bpmhigh:'0' ?>
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -114,11 +144,26 @@
             <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-dark">
-                    <label class="form-group">Oxygen (Today)</label>
+                    <label class="form-group">Oxygen (Past 30 Days)</label>
                 </div>
                 <div class="card-body">
                 <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-success elevation-1">
+                                    <i class="fas fa-lungs"></i>
+                                </span>
+                                <div class="info-box-content">
+                                <span class="info-box-text">Normal</span>
+                                <span class="info-box-number">
+                                    <?= (isset($sponormal)) ? $sponormal:'0' ?>
+                                </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <div class="col-md-4">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-primary elevation-1">
                                     <i class="fas fa-lungs"></i>
@@ -128,14 +173,14 @@
                                 <div class="info-box-content">
                                 <span class="info-box-text">Low</span>
                                 <span class="info-box-number">
-                                    <?= (isset($low)) ? $low:'0' ?>
+                                    <?= (isset($spolow)) ? $spolow:'0' ?>
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
                             <!-- /.info-box -->
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="info-box mb-3">
                                 <span class="info-box-icon bg-danger elevation-1">
                                     <i class="fas fa-lungs"></i>
@@ -145,7 +190,7 @@
                                 <div class="info-box-content">
                                 <span class="info-box-text">High</span>
                                 <span class="info-box-number">
-                                    <?= (isset($low)) ? $low:'0' ?>
+                                    <?= (isset($spohigh)) ? $spohigh:'0' ?>
                                 </span>
                                 </div>
                                 <!-- /.info-box-content -->

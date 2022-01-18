@@ -6,6 +6,7 @@ use App\Models\UserModel;
   
 class SignupController extends Controller
 {
+    // function for sign in index page
     public function index()
     {
         $data['pageTitle'] = 'Sign Up';
@@ -14,6 +15,7 @@ class SignupController extends Controller
         echo view('signup', $data);
     }
   
+    // function to store data into users table in mysql
     public function store()
     {
         helper(['form']);
