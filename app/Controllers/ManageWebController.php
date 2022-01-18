@@ -46,21 +46,62 @@ class ManageWebController extends Controller
         $data['temphigh'] = $settingModel->where('name', 'temphigh')->first();
         $data['bpmlow'] = $settingModel->where('name', 'bpmlow')->first();
         $data['bpmhigh'] = $settingModel->where('name', 'bpmhigh')->first();
-        $data['spolow'] = $settingModel->where('name', 'bpmlow')->first();
-        $data['spohigh'] = $settingModel->where('name', 'bpmhigh')->first();
+        $data['spolow'] = $settingModel->where('name', 'spolow')->first();
+        $data['spohigh'] = $settingModel->where('name', 'spohigh')->first();
         echo view('manage-web/list.php', $data);
     }
  
     // update report data
     public function update(){
         $settingModel = new SettingModel();
-        $id = $this->request->getVar('id');
-        $data = [
-            'name' => $this->request->getVar('name'),
-            'value'  => $this->request->getVar('value'),
-            'description'  => $this->request->getVar('description'),
-        ];
-        $settingModel->update($id, $data);
-        return $this->response->redirect(site_url('manage-report'));
+        $templow = $this->request->getVar('templow');
+        $temphigh = $this->request->getVar('temphigh');
+        $bpmlow = $this->request->getVar('bpmlow');
+        $bpmhigh = $this->request->getVar('bpmhigh');
+        $spolow = $this->request->getVar('spolow');
+        $spohigh = $this->request->getVar('spohigh');
+        // Query table
+        $templowTable = $settingModel->where('name', 'templow')->first();
+        $temphighTable = $settingModel->where('name', 'temphigh')->first();
+        $bpmlowTable = $settingModel->where('name', 'bpmlow')->first();
+        $bpmhighTable = $settingModel->where('name', 'bpmhigh')->first();
+        $spolowTable = $settingModel->where('name', 'spolow')->first();
+        $spohighTable = $settingModel->where('name', 'spohigh')->first();
+        // Get id from queried table
+        $idtemplow = $templowTable['id'];
+        $idtemphigh = $temphighTable['id'];
+        $idbpmlow = $bpmlowTable['id'];
+        $idbpmhigh = $bpmhighTable['id'];
+        $idspolow = $spolowTable['id'];
+        $idspohigh = $spohighTable['id'];
+        
+        $data = array(
+            array(
+            'id' => $idtemplow ,
+            'value' => $templow 
+            ),
+            array(
+                'id' => $idtemphigh ,
+                'value' => $temphigh
+            ),
+            array(
+                'id' => $idbpmlow ,
+                'value' => $bpmlow
+            ),
+            array(
+                'id' => $idbpmhigh ,
+                'value' => $bpmhigh
+            ),
+            array(
+                'id' => $idspolow ,
+                'value' => $spolow
+            ),
+            array(
+                'id' => $idspohigh ,
+                'value' => $spohigh
+            ),
+        );
+        $settingModel->updateBatch($data, 'id');
+        return $this->response->redirect(site_url('manage-web'));
     }
 }

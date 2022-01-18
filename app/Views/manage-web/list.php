@@ -11,6 +11,7 @@
             <div class="card-header bg-dark">
                 <label>Manage Web</label>                
             </div>
+            <form method="post" id="update_setting" name="update_setting" action="<?= site_url('manage-web/update') ?>">
             <div class="card-body">
                 <div class="row">
                 <div class="col-md-4">
@@ -68,6 +69,10 @@
                 </div>
                 </div>
             </div>
+            <div class="col-md-12 d-flex justify-content-center pb-5">
+                <button type="submit" class="btn btn-success" style="width: 150px;">Update</button>
+            </div>
+            </form>
         </div>
     </div>
 </div>

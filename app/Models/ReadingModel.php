@@ -42,11 +42,11 @@ class ReadingModel extends Model{
     }
 
     // Get total today temperature (all user)
-    function tempToday(){
+    function tempToday($l, $h){
         // define start date for today
         $startDate = date('Y-m-d 00:00:00');
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature < 36 AND temperature >37.5 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature < '.$l.' AND temperature > '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -61,11 +61,11 @@ class ReadingModel extends Model{
     }
 
     // Get total today heartrate (all user)
-    function bpmToday(){
+    function bpmToday($l, $h){
         // define start date for today
         $startDate = date('Y-m-d 00:00:00');
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm < 60 AND bpm > 110 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm < '.$l.' AND bpm > '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -79,11 +79,11 @@ class ReadingModel extends Model{
     }
 
     // Get total today oxygen (all user)
-    function spoToday(){
+    function spoToday($l, $h){
         // define start date for today
         $startDate = date('Y-m-d 00:00:00');
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 < 95 AND spo2 > 110 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 < '.$l.' AND spo2 > '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -117,11 +117,11 @@ class ReadingModel extends Model{
     }
 
     // Get total not normal temperature for past 7 days (all user)
-    function temp7Days(){
+    function temp7Days($l, $h){
         // define start date for past 7 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature <= 35 AND temperature >=37.5 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature <= '.$l.' AND temperature >= '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -136,11 +136,11 @@ class ReadingModel extends Model{
     }
 
     // Get total not normal heartrate for past 7 days (all user)
-    function bpm7Days(){
+    function bpm7Days($l, $h){
         // define start date for past 7 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm <= 60 AND bpm >=180 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm <= '.$l.' AND bpm >= '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -155,11 +155,11 @@ class ReadingModel extends Model{
     }
 
     // Get total not normal oxygen for past 7 days (all user)
-    function spo7Days(){
+    function spo7Days($l, $h){
         // define start date for past 7 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 <= 95 AND spo2 >=200 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 <= '.$l.' AND spo2 >= '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -193,11 +193,11 @@ class ReadingModel extends Model{
     }
 
     // Get total not normal temperature for past 30 days (all user)
-    function temp30Days(){
+    function temp30Days($l, $h){
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature <= 35 AND temperature >=37.5 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature <= '.$l.' AND temperature >= '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -212,11 +212,11 @@ class ReadingModel extends Model{
     }
 
     // Get total not normal heartrate for past 30 days (all user)
-    function bpm30Days(){
+    function bpm30Days($l, $h){
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm <= 60 AND bpm >=180 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm <= '.$l.' AND bpm >= '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -231,11 +231,11 @@ class ReadingModel extends Model{
     }
 
     // Get total not normal oxygen for past 30 days (all user)
-    function spo30Days(){
+    function spo30Days($l, $h){
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 <= 95 AND spo2 >=200 AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 <= '.$l.' AND spo2 >= '.$h.' AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -251,7 +251,7 @@ class ReadingModel extends Model{
 
     // MySQL query for single user (login user) filter by rfid of session user
     // Get total normal temperature today for single user (login user)
-    function tempnormal(){
+    function tempnormal($l, $h){
         // define session
         $session = session();
         // get rfid from session
@@ -259,7 +259,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature BETWEEN 36 AND 37.5 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature BETWEEN '.$l.' AND '.$h.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -274,7 +274,7 @@ class ReadingModel extends Model{
     }
 
     // Get total low temperature today for single user (login user)
-    function templow(){
+    function templow($l){
         // define session
         $session = session();
         // get rfid from session
@@ -282,7 +282,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature < 36 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature < '.$l.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -297,7 +297,7 @@ class ReadingModel extends Model{
     }
 
     // Get total high temperature today for single user (login user)
-    function temphigh(){
+    function temphigh($h){
         // define session
         $session = session();
         // get rfid from session
@@ -305,7 +305,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature > 37.5 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature > '.$h.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -320,7 +320,7 @@ class ReadingModel extends Model{
     }
 
     // Get total normal heartrate today for single user (login user)
-    function bpmnormal(){
+    function bpmnormal($l, $h){
         // define session
         $session = session();
         // get rfid from session
@@ -328,7 +328,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm BETWEEN 60 AND 110 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm BETWEEN '.$l.' AND '.$h.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -343,7 +343,7 @@ class ReadingModel extends Model{
     }
 
     // Get total low heartrate today for single user (login user)
-    function bpmlow(){
+    function bpmlow($l){
         // define session
         $session = session();
         // get rfid from session
@@ -351,7 +351,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm < 60 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm < '.$l.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -366,7 +366,7 @@ class ReadingModel extends Model{
     }
 
     // Get total high heartrate today for single user (login user)
-    function bpmhigh(){
+    function bpmhigh($h){
         // define session
         $session = session();
         // get rfid from session
@@ -374,7 +374,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature > 110 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature > '.$h.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -389,7 +389,7 @@ class ReadingModel extends Model{
     }
 
     // Get total normal oxygen today for single user (login user)
-    function sponormal(){
+    function sponormal($l, $h){
         // define session
         $session = session();
         // get rfid from session
@@ -397,7 +397,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 BETWEEN 95 AND 110 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 BETWEEN '.$l.' AND '.$h.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -412,7 +412,7 @@ class ReadingModel extends Model{
     }
 
     // Get total low oxygen today for single user (login user)
-    function spolow(){
+    function spolow($l){
         // define session
         $session = session();
         // get rfid from session
@@ -420,7 +420,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 < 95  AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 < '.$l.'  AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -435,7 +435,7 @@ class ReadingModel extends Model{
     }
 
     // Get total high oxygen today for single user (login user)
-    function spohigh(){
+    function spohigh($h){
         // define session
         $session = session();
         // get rfid from session
@@ -443,7 +443,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 > 110 AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 > '.$h.' AND date_created >="' . $startDate . '" AND RFID = "'.$rfid.'"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {

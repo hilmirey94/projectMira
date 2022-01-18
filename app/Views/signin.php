@@ -14,9 +14,8 @@
             <div class="col-md-6">
                 <div class="card shadow rounded elevation-3">
                     <div class="card-body">
-                        <img class="rounded mx-auto d-block" src="<?php echo base_url(); ?>/public/assets/img/logo.png" alt="Logo" width="150px;"/>
-                        <h6 class="text-center"><?= SITE_NAME; ?></h6>
-                        <h2 class="text-center">Log In</h2>
+                        <img class="rounded mx-auto d-block pt-5" src="<?php echo base_url(); ?>/public/assets/img/logo.png" alt="Logo" width="300px;"/>
+                        <h2 class="text-center pt-3 pb-3">Log In</h2>
                 
                         <?php if(session()->getFlashdata('msg')):?>
                             <div class="alert alert-warning">

@@ -38,9 +38,8 @@
             <div class="card col-md-6 shadow elevation-3">
                 <div class="card-body">
                     <div class="col-md-12">
-                        <img class="rounded mx-auto d-block" src="<?php echo base_url(); ?>/public/assets/img/logo.png" alt="Logo" width="150px;"/>
-                        <h6 class="text-center"><?= SITE_NAME; ?></h6>
-                        <h2 class="text-center">Register User</h2>
+                        <img class="rounded mx-auto d-block pt-5" src="<?php echo base_url(); ?>/public/assets/img/logo.png" alt="Logo" width="300px;"/>
+                        <h2 class="text-center pt-3 pb-3">Register User</h2>
 
                         <?php if(isset($validation)):?>
                         <div class="alert alert-danger">

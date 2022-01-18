@@ -63,6 +63,8 @@ $id = $session->get('id');
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
   <!-- Logout Modal -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>/public/assets/css/logoutmodal.css">
+  <!-- Taskbar Icon -->
+  <link rel="icon" href="<?php echo base_url()?>/public/assets/favicon/favicon.ico" type="image/gif">
   <?= $this->renderSection('css'); ?>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -100,7 +102,7 @@ $id = $session->get('id');
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo site_url('home');?>" class="brand-link">
-      <img src="<?php echo base_url(); ?>/public/assets/img/Logo.png" alt="Project Logo" class="brand-image rounded elevation-3" style="opacity: .8">
+      <img src="<?php echo base_url(); ?>/public/assets/img/Logo-sm.png" alt="Project Logo" class="brand-image rounded elevation-3 bg-white" style="opacity: .8">
       <span class="brand-text font-weight-light"><?= SITE_NAME; ?></span>
     </a>
 
@@ -185,7 +187,7 @@ $id = $session->get('id');
               echo '" class="nav-link">
                   <i class="nav-icon fas fa-laptop-code"></i>
                   <p>
-                    Manage Web
+                    Reading Adjustment
                   </p>
                 </a>
               </li>';}
