@@ -80,5 +80,5 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 
 define('SITE_NAME', 'HMSS');
 define('SITE_LONG_NAME', 'Health Monitoring System');
-define('SITE_CREATOR', 'Shamira Suhairi');
+define('SITE_CREATOR', 'Hilmi Abdul Halim');
 define('SITE_VERSION', '1.0.0');

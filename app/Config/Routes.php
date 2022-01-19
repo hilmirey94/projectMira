@@ -38,6 +38,8 @@ $routes->get('/logout', 'SigninController::logout');
 $routes->get('/home', 'HomeController::index',['filter' => 'authGuard']);
 $routes->get('/about', 'AboutController::index',['filter' => 'authGuard']);
 $routes->get('/report', 'ReportController::index',['filter' => 'authGuard']);
+$routes->get('/analysis', 'AnalysisController::index',['filter' => 'authGuard']);
+$routes->post('/analysis', 'AnalysisController::index',['filter' => 'authGuard']);
 $routes->get('/logs', 'LogsController::index',['filter' => 'authGuard']);
 $routes->post('/logs/find', 'LogsController::index',['filter' => 'authGuard']);
 $routes->get('/logs/delete/(:num)', 'LogsController::delete/$1',['filter' => 'authGuard']);

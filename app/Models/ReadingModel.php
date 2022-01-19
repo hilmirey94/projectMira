@@ -22,6 +22,42 @@ class ReadingModel extends Model{
     ];
 
     // MySQL query for all user 
+    // Get Risky Person today
+    function riskyPerson($a, $b, $c, $d, $e, $f){
+        // define start date for today
+        $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
+        // mysql query data from table
+        $query = $this->db->query('SELECT distinct(rfid) as drfid, date_created FROM reading WHERE date_created >="' . $startDate . '" AND temperature NOT BETWEEN '.$a.' AND '.$b.' AND bpm NOT BETWEEN '.$c.' AND '.$d.' AND spo2 NOT BETWEEN '.$e.' AND '.$f.' ORDER BY DATE_CREATED DESC');
+        // if query return with row value then get row of data else return nothing
+        if($query !== false)
+        {
+            $results = $query->getResult();
+        }
+        else
+        {
+            return false;
+        }
+        // return count of total row of result
+        return $results;
+    }
+    // Get Risky Person Chart today
+    function riskyPersonChart($a, $b, $c, $d, $e, $f){
+        // define start date for today
+        $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
+        // mysql query data from table
+        $query = $this->db->query('SELECT COUNT(*) AS total, DATE(date_created) AS date FROM reading WHERE date_created >="' . $startDate . '" AND temperature NOT BETWEEN '.$a.' AND '.$b.' AND bpm NOT BETWEEN '.$c.' AND '.$d.' AND spo2 NOT BETWEEN '.$e.' AND '.$f.' GROUP BY DATE(date_created)');
+        // if query return with row value then get row of data else return nothing
+        if($query !== false)
+        {
+            $results = $query->getResult();
+        }
+        else
+        {
+            return false;
+        }
+        // return count of total row of result
+        return $results;
+    }
     // Get total today scan ID (all user)
     function scanToday(){
         // define start date for today
@@ -46,7 +82,7 @@ class ReadingModel extends Model{
         // define start date for today
         $startDate = date('Y-m-d 00:00:00');
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature < '.$l.' AND temperature > '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (temperature < '.$l.' OR temperature > '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -65,7 +101,7 @@ class ReadingModel extends Model{
         // define start date for today
         $startDate = date('Y-m-d 00:00:00');
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm < '.$l.' AND bpm > '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (bpm < '.$l.' OR bpm > '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -83,7 +119,7 @@ class ReadingModel extends Model{
         // define start date for today
         $startDate = date('Y-m-d 00:00:00');
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 < '.$l.' AND spo2 > '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (spo2 < '.$l.' OR spo2 > '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -121,7 +157,7 @@ class ReadingModel extends Model{
         // define start date for past 7 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature <= '.$l.' AND temperature >= '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (temperature <= '.$l.' OR temperature >= '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -140,7 +176,7 @@ class ReadingModel extends Model{
         // define start date for past 7 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm <= '.$l.' AND bpm >= '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (bpm <= '.$l.' OR bpm >= '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -159,7 +195,7 @@ class ReadingModel extends Model{
         // define start date for past 7 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-7 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 <= '.$l.' AND spo2 >= '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (spo2 <= '.$l.' OR spo2 >= '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -197,7 +233,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE temperature <= '.$l.' AND temperature >= '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (temperature <= '.$l.' OR temperature >= '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -216,7 +252,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE bpm <= '.$l.' AND bpm >= '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (bpm <= '.$l.' OR bpm >= '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {
@@ -235,7 +271,7 @@ class ReadingModel extends Model{
         // define start date for past 30 days
         $startDate = date('Y-m-d 00:00:00', strtotime('-30 days'));
         // mysql query data from table
-        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE spo2 <= '.$l.' AND spo2 >= '.$h.' AND date_created >="' . $startDate . '"');
+        $query = $this->db->query('SELECT COUNT(*) count FROM reading WHERE (spo2 <= '.$l.' OR spo2 >= '.$h.') AND date_created >="' . $startDate . '"');
         // if query return with row value then get row of data else return nothing
         if($query !== false)
         {

@@ -177,4 +177,337 @@
     </div>  
 </div>
 
+<!-- Risky Person -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <label class="label">Risky Person Chart - Past 7 Days</label>
+            </div>
+            <div class="card-body p-5">
+                <div class="chart-container">
+                    <div class="bar-chart-container">
+                        <div id="GoogleChart" style="height: 350px; width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <label class="label">Possible Risky Person - Past 7 Days</label>
+            </div>
+            <div class="card-body p-5">
+                <div class="table-responsive" style="height: 350px; width: 100%">
+                    <table id="simpleTable" class="table table-sm" style="width:100%;">
+                
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Date Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php if($riskyPerson): ?>
+                        <?php foreach($riskyPerson as $row): ?>
+                            <?php
+                                if($users):
+                                    foreach($users as $u):
+                                        if($u['rfid'] == $row->drfid):
+                                            $username = $u['name'];
+                                            $email = $u['email'];
+                                        endif;
+                                    endforeach;
+                                else:
+                                    $username = 'N/A';
+                                endif;
+                            ?>
+                            <tr>
+                                <td><?php echo $username; ?></td>
+                                <td><?php echo $email; ?></td>
+                                <td><?php echo $row->date_created; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Temperature Chart -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <label class="label">Average Temperature Reading - Past 7 Days (All User)</label>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="bar-chart-container">
+                                        <div id="GoogleLineChart" style="height: 350px; width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="bar-chart-container">
+                                        <div id="GoogleBarChart" style="height: 350px; width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HeartRate Chart -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <label class="label">Average Heartrate Reading - Past 7 Days (All User)</label>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="bar-chart-container">
+                                        <div id="GoogleLineChart2" style="height: 350px; width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="bar-chart-container">
+                                        <div id="GoogleBarChart2" style="height: 350px; width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Oxygen Chart -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-dark">
+                <label class="label">Average Oxygen Reading - Past 7 Days (All User)</label>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="bar-chart-container">
+                                        <div id="GoogleLineChart3" style="height: 350px; width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="chart-container">
+                                    <div class="bar-chart-container">
+                                        <div id="GoogleBarChart3" style="height: 350px; width: 100%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection() ?>
+
+<?= $this->section('script'); ?>
+
+<script>
+    google.charts.load('current', {'packages':['corechart', 'bar']});
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawLineChart);
+    google.charts.setOnLoadCallback(drawLineChart2);
+    google.charts.setOnLoadCallback(drawLineChart3);
+    google.charts.setOnLoadCallback(drawBarChart);
+    google.charts.setOnLoadCallback(drawBarChart2);
+    google.charts.setOnLoadCallback(drawBarChart3);
+
+    // Step Chart Risky
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Total Risky Person'],
+                <?php 
+                    foreach ($riskyPersonChart as $row){
+                        echo "['".$row->date."',".$row->total."],";
+                } ?>
+        ]);
+
+        var options = {
+          title: 'Step Chart of Risky Person Per Day (Past 7 Days)',
+          vAxis: {title: 'Accumulated Rating'},
+          isStacked: true
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('GoogleChart'));
+
+        chart.draw(data, options);
+    }
+
+    // Line Chart Temperature
+    function drawLineChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Average Temperature (°C)'],
+                <?php 
+                    foreach ($tempArray as $row){
+                        echo "['".$row['date']."',".$row['avgtemp']."],";
+                } ?>
+        ]);
+
+        var options = {
+            title: 'Line Chart Average Temperature By Date (Past 7 Days)',
+            curveType: 'function',
+            legend: {
+                position: 'top'
+            }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('GoogleLineChart'));
+        chart.draw(data, options);
+    }
+
+    // Line Chart Heartrate
+    function drawLineChart2() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Average Heartrate (BPM)'],
+                <?php 
+                    foreach ($bpmArray as $row){
+                        echo "['".$row['date']."',".$row['avgbpm']."],";
+                } ?>
+        ]);
+
+        var options = {
+            title: 'Line Chart Average Heartrate By Date (Past 7 Days)',
+            curveType: 'function',
+            legend: {
+                position: 'top'
+            }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('GoogleLineChart2'));
+        chart.draw(data, options);
+    }
+
+    // Line Chart Oxygen
+    function drawLineChart3() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Average Oxygen (SPO2)'],
+                <?php 
+                    foreach ($spoArray as $row){
+                        echo "['".$row['date']."',".$row['avgspo']."],";
+                } ?>
+        ]);
+
+        var options = {
+            title: 'Line Chart Average Oxygen By Date (Past 7 Days)',
+            curveType: 'function',
+            legend: {
+                position: 'top'
+            }
+        };
+        var chart = new google.visualization.LineChart(document.getElementById('GoogleLineChart3'));
+        chart.draw(data, options);
+    }
+    
+    
+    // Bar Chart Temperature
+    google.charts.setOnLoadCallback(showBarChart);
+    function drawBarChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Average Temperature (°C)'], 
+                <?php 
+                    foreach ($tempArray as $row){
+                        echo "['".$row['date']."',".$row['avgtemp']."],";
+                    }
+                ?>
+        ]);
+        var options = {
+            title: 'Bar Chart Average Temperature By Date (Past 7 Days)',
+            is3D: true,
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('GoogleBarChart'));
+        chart.draw(data, options);
+    }
+
+    // Bar Chart Heartrate
+    google.charts.setOnLoadCallback(showBarChart2);
+    function drawBarChart2() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Average Heartrate (BPM)'], 
+                <?php 
+                    foreach ($bpmArray as $row){
+                        echo "['".$row['date']."',".$row['avgbpm']."],";
+                    }
+                ?>
+        ]);
+        var options = {
+            title: 'Bar Chart Average Heartrate By Date (Past 7 Days)',
+            is3D: true,
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('GoogleBarChart2'));
+        chart.draw(data, options);
+    }
+
+    // Bar Chart Oxygen
+    google.charts.setOnLoadCallback(showBarChart3);
+    function drawBarChart3() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Average Oxygen (SPO2)'], 
+                <?php 
+                    foreach ($spoArray as $row){
+                        echo "['".$row['date']."',".$row['avgspo']."],";
+                    }
+                ?>
+        ]);
+        var options = {
+            title: 'Bar Chart Average Oxygen By Date (Past 7 Days)',
+            is3D: true,
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('GoogleBarChart3'));
+        chart.draw(data, options);
+    }
+    
+</script>
+
+
 <?= $this->endSection() ?>

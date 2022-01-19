@@ -137,13 +137,20 @@ $id = $session->get('id');
               </p>
             </a>
           </li>
-
           
           <li class="nav-item">
             <a href="<?php echo site_url('report');?>" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Report (Self)
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('analysis');?>" class="nav-link">
+              <i class="nav-icon fas fa-chart-bar"></i>
+              <p>
+                Analysis (Self)
               </p>
             </a>
           </li>
@@ -321,6 +328,10 @@ $id = $session->get('id');
 <script src="<?php echo base_url(); ?>/public/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<?php echo base_url(); ?>/public/dist/js/pages/dashboard2.js"></script>
+<!-- Chart JS Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<!-- Google Chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <?= $this->renderSection('script'); ?>
 <script>
@@ -349,11 +360,22 @@ $id = $session->get('id');
           });
           
           // Table with minimal function
-          var dashboardtable = $('#dashboardTable').DataTable({
+          $('#dashboardTable').DataTable({
             "lengthChange": false,
             "searching": false,
             "pageLength": 10,
             "order": [[0, 'desc']]
+          });
+
+          // Table with simple design
+          $('#simpleTable').DataTable({
+            "lengthChange": false,
+            "searching": false,
+            "pageLength": 7,
+            "order": [[0, 'ASC']],
+            "paging":   false,
+            "ordering": false,
+            "info":     true
           });
 
           // Table with default function

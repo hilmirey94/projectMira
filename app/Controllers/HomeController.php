@@ -3,6 +3,7 @@
 namespace App\Controllers;  
 use CodeIgniter\Controller;
 use App\Models\ReadingModel;
+use App\Models\UserModel;
 use App\Models\SettingModel;
 use App\Controllers\DateTime;
 
@@ -15,6 +16,7 @@ class HomeController extends Controller
         // Declare Reading Model
         $readingModel = new ReadingModel();
         $settingModel = new SettingModel();
+        $userModel = new UserModel();
         // define session
         $session = session();
         // define page title as 'Home'
@@ -50,12 +52,18 @@ class HomeController extends Controller
         $data['spo30Days'] = $readingModel->spo30Days($spolow, $spohigh);
         // Query reading table for all data
         $data['reading'] = $readingModel->where('date_created >=', date('Y-m-d 00:00:00'))->orderBy('date_created', 'DESC')->findAll();
-        // Query reading table for average temperature for past 30 days
-        $data['tempArray'] = $readingModel->select('date(date_created) as date, AVG(temperature) AS avgtemp')->where('date_created >=', date('Y-m-d 00:00:00', strtotime('-30 days')))->groupBy('DATE(date_created)')->orderBy('date_created', 'ASC')->findAll();
-        // Query reading table for average heartrate for past 30 days
-        $data['bpmArray'] = $readingModel->select('date(date_created) as date, AVG(bpm) AS avgbpm')->where('date_created >=', date('Y-m-d 00:00:00', strtotime('-30 days')))->groupBy('DATE(date_created)')->orderBy('date_created', 'ASC')->findAll();
-        // Query reading table for average oxygen for past 30 days
-        $data['spoArray'] = $readingModel->select('date(date_created) as date, AVG(spo2) AS avgspo')->where('date_created >=', date('Y-m-d 00:00:00', strtotime('-30 days')))->groupBy('DATE(date_created)')->orderBy('date_created', 'ASC')->findAll();
+        // Query reading table for all data
+        $data['users'] = $userModel->findAll();
+        // Query risky person 
+        $data['riskyPerson'] = $readingModel->riskyPerson($templow, $temphigh, $bpmlow, $bpmhigh, $spolow, $spohigh);
+        // Query risky person chart
+        $data['riskyPersonChart'] = $readingModel->riskyPersonChart($templow, $temphigh, $bpmlow, $bpmhigh, $spolow, $spohigh);
+        // Query reading table for average temperature for past 7 days
+        $data['tempArray'] = $readingModel->select('date(date_created) as date, AVG(temperature) AS avgtemp')->where('date_created >=', date('Y-m-d 00:00:00', strtotime('-7 days')))->groupBy('DATE(date_created)')->orderBy('date_created', 'ASC')->findAll();
+        // Query reading table for average heartrate for past 7 days
+        $data['bpmArray'] = $readingModel->select('date(date_created) as date, AVG(bpm) AS avgbpm')->where('date_created >=', date('Y-m-d 00:00:00', strtotime('-7 days')))->groupBy('DATE(date_created)')->orderBy('date_created', 'ASC')->findAll();
+        // Query reading table for average oxygen for past 7 days
+        $data['spoArray'] = $readingModel->select('date(date_created) as date, AVG(spo2) AS avgspo')->where('date_created >=', date('Y-m-d 00:00:00', strtotime('-7 days')))->groupBy('DATE(date_created)')->orderBy('date_created', 'ASC')->findAll();
         // open home page with above assigned data
         echo view('home', $data);
     }

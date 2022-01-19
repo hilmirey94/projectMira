@@ -23,7 +23,8 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/HMSS/';
+    //public $baseURL = 'http://localhost/HMSS/';
+    public $baseURL = 'http://localhost:9407/HMSS/';
     //public $baseURL = 'https://b273-27-125-245-61.ngrok.io/prom/';
 
     /**

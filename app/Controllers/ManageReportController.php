@@ -46,16 +46,16 @@ class ManageReportController extends Controller
         $data['user_type'] = $session->get('user_type');
         $fromDate = $this->request->getVar('fromDate');
         $toDate = $this->request->getVar('toDate');
-        if($fromDate != null && $toDate != null){
+        if($fromDate != '' && $toDate != ''){
             $data['startDate'] = $fromDate;
             $data['endDate'] = $toDate;
             $data['reading'] = $readingModel->where('date(date_created) >= ', $fromDate)->where('date(date_created) <=', $toDate)->findAll();
         }
-        elseif($fromDate != null && $toDate == null) {
+        elseif($fromDate != '' && $toDate == '') {
             $data['startDate'] = $fromDate;
             $data['reading'] = $readingModel->where('date(date_created) >= ', $fromDate)->findAll();
         }
-        elseif($fromDate == null && $toDate != null){
+        elseif($fromDate == '' && $toDate != ''){
             $data['endDate'] = $toDate;
             $data['reading'] = $readingModel->where('date(date_created) <=', $toDate)->findAll();
         }

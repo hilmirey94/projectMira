@@ -38,7 +38,7 @@
             <h3 class="d-flex justify-content-center border shadow rounded p-3">About Creator</h3>
                 <div class="">
                     <div class="p-5 d-flex justify-content-center">
-                        <img src="<?php echo base_url(); ?>/public/assets/img/shamira.jpg" style="width:200px;" class="shadow rounded elevation-3"/>
+                        <img src="<?php echo base_url(); ?>/public/assets/img/profile.jpg" style="width:200px;" class="shadow rounded elevation-3"/>
                     </div>
                     <div class="blockquote text-justify bg-dark p-3">
                         <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
